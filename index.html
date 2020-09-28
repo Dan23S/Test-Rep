@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Leaflet Map</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="map" style="width: 800px; height: 700px"></div>
+
+    <script>
+      var map = L.map('map').setView([-25.7236, 28.1122], 15);
+
+      var osm_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      var watercolor_URL = 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png';
+      var dark_URL = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
+
+      var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+
+      function getColor(d) {
+        return d = 'A' ? '#800026' :
+               d = 'B' ? '#800026' :
+               d = 'C' ? '#800026' :
+               d = 'D' ? '#800026' :
+               d = 'E' ? '#800026' :
+               d = 'F' ? '#800026' :
+               d = 'G' ? '#800026' :
+               d = 'H' ? '#800026' :
+               d = 'I' ? '#800026' :
+               d = 'J' ? '#800026' :
+               d = 'K' ? '#800026' :
+               d = 'L' ? '#800026' :
+               d = 'M' ? '#800026' :
+               d = 'N' ? '#800026' :
+               d = 'O' ? '#800026' :
+               d = 'P' ? '#800026' :
+               d = 'Q' ? '#800026' :
+               d = 'R' ? '#800026' :
+               d = 'S' ? '#800026' :
+               d = 'T' ? '#800026' :
+               d = 'U' ? '#800026' :
+               d = 'V' ? '#800026' :
+               d = 'W' ? '#800026' :
+               d = 'X' ? '#800026' :
+               d = 'Y' ? '#800026' :
+               d = 'Z' ? '#800026' :
+               d = 'AA' ? '#800026' :
+               d = 'AB' ? '#800026' :
+               d = 'AC' ? '#800026' :
+               d = 'AD' ? '#800026' :
+               d = 'AE' ? '#800026' :
+               d = 'AF' ? '#800026' :
+               d = 'AG' ? '#800026' :
+               d = 'AH' ? '#800026' :
+               d = 'AI' ? '#800026' :
+               d = 'AJ' ? '#800026' :
+               d = 'AK' ? '#800026' :
+               d = 'AL' ? '#800026' :
+               d = 'AM' ? '#800026' :
+               d = 'AN' ? '#800026' :
+               d = 'AO' ? '#800026' :
+               d = 'AP' ? '#800026' :
+               d = 'AQ' ? '#800026' :
+               d = 'AR' ? '#800026' :
+               d = 'AS' ? '#800026' :
+               d = 'AT' ? '#800026' :
+               d = 'AU' ? '#800026' :
+               d = 'AV' ? '#800026' :
+               d = 'AW' ? '#800026' :
+               d = 'AX' ? '#800026' :
+               d = 'AY' ? '#800026' :
+               d = 'AZ' ? '#800026' :
+               d = 'BA' ? '#800026' :
+               d = 'BB' ? '#800026' :
+               d = 'BC' ? '#800026' :
+               d = 'BD' ? '#800026' :
+               d = 'BE' ? '#800026' :
+               d = 'BF' ? '#800026' :
+               d = 'BG' ? '#800026' :
+               d = 'BH' ? '#800026' :
+               d = 'BI' ? '#800026' :
+               d = 'BJ' ? '#800026' :
+               d = 'BK' ? '#800026' :
+               d = 'BL' ? '#800026' :
+               d = 'BM' ? '#800026' :
+               d = 'BN' ? '#800026' :
+               d = 'BO' ? '#800026' :
+               d = 'BP' ? '#800026' :
+               d = 'BQ' ? '#800026' :
+               d = 'BR' ? '#800026' :
+               d = 'BS' ? '#800026' :
+               d = 'BT' ? '#800026' :
+               d = 'BU' ? '#800026' :
+               d = 'BV' ? '#800026' :
+               d = 'BW' ? '#800026' :
+               d = 'BX' ? '#800026' :
+               d = 'BY' ? '#800026' :
+               d = 'BZ' ? '#800026' :
+               d = 'CA' ? '#800026' :
+               d = 'CB' ? '#800026' :
+               d = 'CC' ? '#800026' :
+               d = 'CD' ? '#800026' :
+               d = 'CE' ? '#800026' :
+               d = 'CF' ? '#800026' :
+               d = 'CG' ? '#800026' :
+               d = 'CH' ? '#800026' :
+               d = 'CI' ? '#800026' :
+               d = 'CJ' ? '#800026' :
+               d = 'CK' ? '#800026' :
+               d = 'CL' ? '#800026' :
+               d = 'CM' ? '#800026' :
+               d = 'CN' ? '#800026' :
+               d = 'CO' ? '#800026' :
+               d = 'CP' ? '#800026' :
+               d = 'CQ' ? '#800026' :
+               d = 'CR' ? '#800026' :
+               d = 'CS' ? '#800026' :
+               d = 'CT' ? '#800026' :
+               d = 'CU' ? '#800026' :
+               d = 'CV' ? '#800026' :
+               d = 'CW' ? '#800026' :
+               d = 'CX' ? '#800026' :
+               d = 'CY' ? '#800026' :
+               d = 'CZ' ? '#800026' :
+               d = 'DA' ? '#800026' :
+               d = 'DB' ? '#800026' :
+               d = 'DC' ? '#800026' :
+               d = 'DD' ? '#800026' :
+               d = 'DE' ? '#800026' :
+               d = 'DF' ? '#800026' :
+               d = 'DG' ? '#800026' :
+               d = 'DH' ? '#800026' :
+               d = 'DI' ? '#800026' :
+               d = 'DJ' ? '#800026' :
+               d = 'DK' ? '#800026' :
+               d = 'DL' ? '#800026' :
+               d = 'DM' ? '#800026' :
+               d = 'DN' ? '#800026' :
+               d = 'DO' ? '#800026' :
+               d = 'DP' ? '#800026' :
+               d = 'DQ' ? '#800026' :
+               d = 'DR' ? '#800026' :
+               d = 'DS' ? '#800026' :
+               d = 'DT' ? '#800026' :
+               d = 'DU' ? '#800026' :
+               d = 'DV' ? '#800026' :
+               d = 'DW' ? '#800026' :
+               d = 'DX' ? '#800026' :
+               d = 'DY' ? '#800026' :
+               d = 'DZ' ? '#800026' :
+               d = 'EA' ? '#800026' :
+               d = 'EB' ? '#800026' :
+               d = 'EC' ? '#800026' :
+               d = 'ED' ? '#800026' :
+                         '#feedde';
+        };
+
+        L.tileLayer(
+            osm_URL, {
+            attribution: '&copy; ' + mapLink + ' Contributors'
+          }).addTo(map);
+
+        var owsrootUrl = 'http://geodev.co.za:8080/geoserver/Danika/ows';
+
+        var defaultParameters = {
+            service : 'WFS',
+            version : '1.0.0',
+            request : 'GetFeature',
+            typeName : 'Danika:Blocks+Names',
+            outputFormat : 'text/javascript',
+            format_options : 'callback:getJson',
+            SrsName : 'EPSG:4326'
+        };
+
+        var parameters = L.Util.extend(defaultParameters);
+        var URL = owsrootUrl + L.Util.getParamString(parameters);
+
+        var WFSLayer = null;
+        var ajax = $.ajax({
+            url : URL,
+            dataType : 'jsonp',
+            jsonpCallback : 'getJson',
+            success : function (response) {
+                WFSLayer = L.geoJson(response, {
+                    style: function (feature) {
+                        return {
+                            stroke: false,
+                            fillColor: getColor(feature.properties.block_name),
+                            fillOpacity: 0.5
+                        };
+                    },
+                    onEachFeature: function (feature, layer) {
+                        popupOptions = {maxWidth: 200};
+                        layer.bindPopup("Block: " + feature.properties.block_name
+                            ,popupOptions);
+                    }
+                }).addTo(map);
+            }
+        });
+
+    </script>
+</body>
+</html>
